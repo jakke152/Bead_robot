@@ -53,7 +53,8 @@ void update()
         pathExecutor.iterateSequence();
 
     pathExecutor.linkedPathProcessor->linkedPIDController->updatePIDController();
-    buggyController.SDLTicks = SDL_GetTicks();
+    buggyController.SDLTicks += 17;
+    //buggyController.SDLTicks = SDL_GetTicks();
 }
 void input()
 {
