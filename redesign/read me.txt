@@ -1,0 +1,6 @@
+the render is only a mock up to get the point across the dimensions are out on the scoop and
+two of the mounting squares would actualy be the motors but this is only to get the 
+mock up design / to get the point of the design across 
+the cad redners folder also doesnt have the back bit so it can be seen easier but i put it back in the
+solidworks and the stl file. Also this will act as evidance 
+jake smells :)
