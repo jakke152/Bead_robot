@@ -21,7 +21,6 @@ void PathExecutor::forwardsUntilInterrupted()
 }
 void PathExecutor::backwardsUntilInterrupted()
 {
-    printf("\n***----bwd until interrupted----***\n");
     linkedPathProcessor->straight(-1, 0);
 }
 
