@@ -31,10 +31,11 @@ void TunePlayer::updatePlayer(int ticks) {
     if ((data & 0xF) == 0xF) {
       buzzer.write(0.0f);
     } else {
-        buzzer.write(0.50f);
+      buzzer.write(0.50f);
       uint16_t freq =
           pgm_read_word(&freq8[data & 0xF]) / (1 << (8 - (data >> 4 & 0xF)));
-      playTune(freq, duration);
+      if (freq != 0)
+        buzzer.period_us(1e6 / freq);
     }
     prevTime = ticks;
     noteIndex++;

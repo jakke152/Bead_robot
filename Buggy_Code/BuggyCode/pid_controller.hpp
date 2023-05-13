@@ -1,7 +1,7 @@
 #ifndef PID_CONTROLLER_HPP
 #define PID_CONTROLLER_HPP
 
-#include "functions.hpp"
+#include "constants.hpp"
 
 #include "buggy_controller.hpp"
 
