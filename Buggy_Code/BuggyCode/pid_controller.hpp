@@ -5,28 +5,37 @@
 
 #include "buggy_controller.hpp"
 
-class PIDController
-{
+class PIDController {
 private:
-    float Kp = PID_KP;
-    float Ki = PID_KI;
-    float Kd = PID_KD;
+  // Uses predefined constants to assign PID values
+  float Kp = PID_KP;
+  float Ki = PID_KI;
+  float Kd = PID_KD;
 
-    float prevError[2] = {0, 0};  // Previous error values for motors 1 & 2
-    float integral[2] = {0, 0};
-    long prevPollTime = 0;
+  // -- Variables storing information from the previous cycle --
+  float prevError[2] = {0, 0};
+  float integral[2] = {0, 0};
+  // Stores the previous cycle time, used to find dT
+  long prevPollTime = 0;
 
-    BuggyController *linkedBuggyController;
+  BuggyController *linkedBuggyController;
+
 public:
-    PIDController();
-    ~PIDController();
-    PIDController(BuggyController *linkedBuggyController);
+  PIDController();
+  ~PIDController();
+  // Initalises PID controller with a linked buggy controller
+  PIDController(BuggyController *linkedBuggyController);
 
-    void updatePIDController();
-    float calculateControlValue(int index, float current, float dt);
+  // Update the entire PID controller
+  void updatePIDController();
+  // Calculates the speed the motors should spin in order to smoothly transition
+  // towards their setpoint
+  float calculateControlValue(int index, float current, float dt);
 
-    int setPoints[2];
-    float *current[2];
+  // Motor setpoints
+  int setPoints[2];
+  // Pointers to current motor PWM values
+  float *current[2];
 };
 
 #endif

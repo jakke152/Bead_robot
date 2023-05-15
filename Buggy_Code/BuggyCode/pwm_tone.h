@@ -1,9 +1,19 @@
 #ifndef _PWM_TONE_H_
 #define _PWM_TONE_H_
 
-/* Includes ------------------------------------------------------------------*/
-#include "mbed.h"
 #include "pgmspace.h"
+
+// Defines each note and how to store their desired durations as well as their
+// frequency in a single 16-bit unsigned integer
+//
+// The duration is passed in when the note is referenced and is immediately
+// shifted 8 bits left before a bitwise or is carried out between the current
+// data and an 8-bit binary number correlating to the frequency of the note
+// In doing this, both the duration and frequency of the note can be stored in a
+// single 16-bit unsigned integer.
+// In order to calculate the exact frequency, a small lookup table containing
+// just 12 integers is used alongside the least significant 8-bits of the data
+
 // Octave 0 Note Codes
 #define NOTE_C_0(DURATION) ((((uint16_t)DURATION) << 8) | 0b00000000)
 #define NOTE_CS_0(DURATION) ((((uint16_t)DURATION) << 8) | 0b00000001)

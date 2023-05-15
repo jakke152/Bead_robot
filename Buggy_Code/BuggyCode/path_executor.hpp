@@ -7,32 +7,42 @@
 
 #include <vector>
 
-class PathExecutor
-{
+class PathExecutor {
 private:
-    std::vector<void (PathExecutor::*)()> sequenceFunctions;
+  // Stores all the pointers to functions which define the sequence that the
+  // buggy will follow
+  std::vector<void (PathExecutor::*)()> sequenceFunctions;
 
-    int sequenceLength = 7;
+  int sequenceLength = 7;
 
 public:
-    PathExecutor();
-    ~PathExecutor();
-    PathExecutor(PathProcessor *linkedPathProcessor);
+  PathExecutor();
+  ~PathExecutor();
+  // Constructs the path executor with a pointer to the path processor in which
+  // all moves will be carried out
+  PathExecutor(PathProcessor *linkedPathProcessor);
 
-    void forwardsUntilInterrupted();
-    void backwardsUntilInterrupted();
+  // -- Sequence section functions --
+  void forwardsUntilInterrupted();
+  void backwardsUntilInterrupted();
 
-    void forwardsToStart();
-    void forwardsToNextRow();
+  // Short move to get away from wall to starting position
+  void forwardsToStart();
+  // Move from current row into the next row
+  void forwardsToNextRow();
 
-    void clockwise();
-    void counterclockwise();
+  // Turning 90 degrees clockwise or counter-clockwise
+  void clockwise();
+  void counterclockwise();
 
-    void iterateSequence();
+  // Moves the sequence onto the next section
+  void iterateSequence();
 
-    int sequencePosition = -1;
+  // Stores the section that the sequence is in
+  int sequencePosition = -1;
 
-    PathProcessor *linkedPathProcessor;
+  // Path processor that carries out all the specified moves
+  PathProcessor *linkedPathProcessor;
 };
 
 #endif

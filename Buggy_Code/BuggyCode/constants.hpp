@@ -1,17 +1,18 @@
 #ifndef CONSTANTS_HPP
 #define CONSTANTS_HPP
 
-// Screen speed if both motors are going max speed in the same direction (pixels/frame)
-#define BUGGY_MAX_SCREEN_SPEED 3.5
+// -- Timings --
 
-// Rotation speed if both motors are going max speed in opposing directions (rads/frame)
-#define BUGGY_MAX_ROTATION_SPEED M_PI_2 *((BUGGY_MAX_SCREEN_SPEED * 2) / (BUGGY_WIDTH * M_PI))
+// Interval between rows
+#define BUGGY_ROW_INTERVAL 1000  
+// Time to move away from wall before turning
+#define BUGGY_WALL_OFFSET_INTERVAL 1000  
+// Time to complete a 90 degree turn
+#define BUGGY_TURN_90_INTERVAL 2400  
+// Time to wait after detecting a switch to read its input again (switch debounce)
+#define BUGGY_SWITCH_COOLDOWN 3000  
 
-#define BUGGY_ROW_INTERVAL 1000
-#define BUGGY_WALL_OFFSET_INTERVAL 1000
-#define BUGGY_TURN_90_INTERVAL 2400*0.7
-#define BUGGY_SWITCH_COOLDOWN 3000
-
+// -- PID Controller --
 #define PID_KP 0.05
 #define PID_KI 0
 #define PID_KD 0
